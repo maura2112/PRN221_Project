@@ -9571,11 +9571,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Sem7\\PRN2\\ProjectPRN221\\ProjectPRN221.csproj",
+      "projectUniqueName": "D:\\Sem7\\PRN2\\PRN221_Project\\ProjectPRN221.csproj",
       "projectName": "ProjectPRN221",
-      "projectPath": "D:\\Sem7\\PRN2\\ProjectPRN221\\ProjectPRN221.csproj",
+      "projectPath": "D:\\Sem7\\PRN2\\PRN221_Project\\ProjectPRN221.csproj",
       "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-      "outputPath": "D:\\Sem7\\PRN2\\ProjectPRN221\\obj\\",
+      "outputPath": "D:\\Sem7\\PRN2\\PRN221_Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",

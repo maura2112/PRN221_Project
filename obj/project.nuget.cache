@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZXtG10EF8xj7smRoIYmCQo0brcJn48nzqvpvYcom4GGcIjgsa+UsLIRxX6IOE1ZjSDSRCoCRugWv3z5BXX/JzQ==",
+  "dgSpecHash": "K9ICNEeIk8NnRKTYVU0bwsIVhLtVoQ1Hw7wpKGVQznNxz4ryyqIe009/DQHzKL4SGesHGGM0Ujaoui2/F4ujOQ==",
   "success": true,
-  "projectFilePath": "D:\\Sem7\\PRN2\\ProjectPRN221\\ProjectPRN221.csproj",
+  "projectFilePath": "D:\\Sem7\\PRN2\\PRN221_Project\\ProjectPRN221.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asus\\.nuget\\packages\\commonservicelocator\\2.0.2\\commonservicelocator.2.0.2.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
