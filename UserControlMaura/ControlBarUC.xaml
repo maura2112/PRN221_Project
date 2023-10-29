@@ -29,12 +29,12 @@
                     </StackPanel.Resources>
                     <Button Command="{Binding MinimizeWindowCommand}" 
                             CommandParameter="{Binding ElementName=ucControlBar}"
-                        ToolTip="Đóng" ToolBar.OverflowMode="AsNeeded" Background="ForestGreen">
+                        ToolTip="Thu nhỏ" ToolBar.OverflowMode="AsNeeded" Background="ForestGreen">
                         <materialDesign:PackIcon Kind="WindowMinimize" />
                     </Button>
                     <Button Command="{Binding MaximizeWindowCommand}" 
                             CommandParameter="{Binding ElementName=ucControlBar}"
-                        ToolTip="Đóng" ToolBar.OverflowMode="AsNeeded" Background="ForestGreen">
+                        ToolTip="Phóng to" ToolBar.OverflowMode="AsNeeded" Background="ForestGreen">
                         <materialDesign:PackIcon Kind="WindowMaximize" />
                     </Button>
                     <Button Command="{Binding CloseWindowCommand}" 

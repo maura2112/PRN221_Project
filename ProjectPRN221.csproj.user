@@ -7,7 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="CustomerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UnitWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserControlMaura\ControlBarUC.xaml.cs">
@@ -15,6 +21,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="CustomerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -22,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ResourceXAML\MainResource.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UnitWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControlMaura\ControlBarUC.xaml">

@@ -167,3 +167,5 @@ D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\LoginWindow.g.cs
 D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\UserControlMaura\ControlBarUC.g.cs
 D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\LoginWindow.baml
 D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\UserControlMaura\ControlBarUC.baml
+D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\UnitWindow.g.cs
+D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\UnitWindow.baml
