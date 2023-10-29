@@ -169,3 +169,11 @@ D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\LoginWindow.baml
 D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\UserControlMaura\ControlBarUC.baml
 D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\UnitWindow.g.cs
 D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\UnitWindow.baml
+D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\CustomerWindow.g.cs
+D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\InputWindow.g.cs
+D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\ObjectWindow.g.cs
+D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\OutputWindow.g.cs
+D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\CustomerWindow.baml
+D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\InputWindow.baml
+D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\ObjectWindow.baml
+D:\Sem7\PRN2\PRN221_Project\obj\Debug\net6.0-windows\OutputWindow.baml
