@@ -71,9 +71,22 @@ namespace ProjectPRN221.ViewModel
         {
             FrameworkElement parent = p;
 
-            while (parent.Parent != null)
+            while (parent != null)
             {
-                parent = parent.Parent as FrameworkElement;
+                FrameworkElement? potentialParent = parent.Parent as FrameworkElement;
+                if (potentialParent != null)
+                {
+                    parent = potentialParent;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            if (parent == null)
+            {
+                parent = p; // Trả về giá trị mặc định khi không tìm thấy parent hợp lệ.
             }
 
             return parent;

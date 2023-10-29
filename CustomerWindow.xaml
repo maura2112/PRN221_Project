@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjectPRN221"
         mc:Ignorable="d"
         
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:uc="clr-namespace:ProjectPRN221.UserControlMaura"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"

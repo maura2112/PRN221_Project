@@ -14,9 +14,9 @@
           "Microsoft.EntityFrameworkCore.Design": "6.0.22",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.22",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.77",
           "System.Data.SqlClient": "4.8.5",
-          "System.Text.Json": "7.0.3",
-          "System.Windows.Interactivity.WPF": "2.0.20525"
+          "System.Text.Json": "7.0.3"
         },
         "runtime": {
           "ProjectPRN221.dll": {}
@@ -41,7 +41,7 @@
       "MaterialDesignThemes/4.9.0": {
         "dependencies": {
           "MaterialDesignColors": "2.1.4",
-          "Microsoft.Xaml.Behaviors.Wpf": "1.1.39"
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.77"
         },
         "runtime": {
           "lib/net6.0/MaterialDesignThemes.Wpf.dll": {
@@ -424,11 +424,11 @@
           "Microsoft.NETCore.Platforms": "3.1.0"
         }
       },
-      "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.77": {
         "runtime": {
-          "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
+          "lib/net6.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
             "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.39.4716"
+            "fileVersion": "1.1.77.27830"
           }
         }
       },
@@ -607,18 +607,6 @@
       "System.Windows.Extensions/4.7.0": {
         "dependencies": {
           "System.Drawing.Common": "4.7.0"
-        }
-      },
-      "System.Windows.Interactivity.WPF/2.0.20525": {
-        "runtime": {
-          "lib/net40/Microsoft.Expression.Interactions.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "2.0.20525.0"
-          },
-          "lib/net40/System.Windows.Interactivity.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "2.0.20525.0"
-          }
         }
       }
     }
@@ -881,12 +869,12 @@
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
     },
-    "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.77": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-8PZKqw9QOcu42xk8puY4P1+EXHL9YGOR9b7qhaYx5cILHul456H073tj99vyPcCt0W0781T9RwHqkx507ZyUpQ==",
-      "path": "microsoft.xaml.behaviors.wpf/1.1.39",
-      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+      "sha512": "sha512-MCu674ZETgU18EbxfwIlRpUPJ02YbZenLsMCXTkpeA7KUBpXfFaOUDlEO+7UWu5AFnUoydg+aQENJkuaZPheMQ==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.77",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.77.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "type": "package",
@@ -1034,13 +1022,6 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
-    },
-    "System.Windows.Interactivity.WPF/2.0.20525": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-0r+Le4E7hCm4zToUvBzjSUyTcuU3rFeoPa7JyTdWIzR/F7wH6+O/pWkjHIG40hIA0z1wvRdZayvoizA4wcK1dg==",
-      "path": "system.windows.interactivity.wpf/2.0.20525",
-      "hashPath": "system.windows.interactivity.wpf.2.0.20525.nupkg.sha512"
     }
   }
 }
