@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Sem7\PRN2\PRN221_Project\App.xaml
-11407045341
+41406851918
 
-588448943
-229-1800928362
-MainWindow.xaml;
+10-776284497
+226354253873
+LoginWindow.xaml;MainWindow.xaml;ResourceXAML\MainResource.xaml;UserControlMaura\ControlBarUC.xaml;
 
-False
+True
 
