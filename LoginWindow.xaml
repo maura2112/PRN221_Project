@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:ProjectPRN221"
         mc:Ignorable="d"
         
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:uc="clr-namespace:ProjectPRN221.UserControlMaura"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,7 +19,7 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        
+        DataContext="{StaticResource LoginVM}"
         Name="loginWindow"
         Title="Đăng nhập" Height="300" Width="400">
     <Grid>
@@ -43,12 +44,20 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập"
+                             Text="{Binding UserName}"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
                 <Grid Grid.Row="1">
                     <PasswordBox x:Name="FloatingPasswordBox"
                                  materialDesign:HintAssist.Hint="Mật khẩu"
-                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="PasswordChanged">
+                                <b:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                   CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </PasswordBox>
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -56,13 +65,18 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0"    
+                    <Button Grid.Column="0"   
+                            IsDefault="True"
                             Style="{StaticResource MaterialDesignRaisedButton}"    
                             Width="110"    
+                            Command="{Binding LoginCommand}"
+                            CommandParameter="{Binding ElementName=loginWindow}"
                             ToolTip="Resource name: MaterialDesignRaisedButton" Content="Đăng nhập"></Button>
                     <Button Grid.Column="1"    
                             Style="{StaticResource MaterialDesignRaisedButton}"    
                             Width="110"    
+                            Command="{Binding CloseCommand}"
+                            CommandParameter="{Binding ElementName=loginWindow}"
                             Background="OrangeRed"
                             ToolTip="Resource name: MaterialDesignRaisedButton" Content="Thoát"></Button>
                 </Grid>

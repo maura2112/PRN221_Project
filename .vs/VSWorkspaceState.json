@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\UserControlMaura"
   ],
-  "SelectedNode": "\\ViewModel",
+  "SelectedNode": "\\UserControlMaura\\ControlBarUC.xaml",
   "PreviewInSolutionExplorer": false
 }
