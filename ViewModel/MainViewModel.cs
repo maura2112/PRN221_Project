@@ -1,6 +1,8 @@
-﻿using ProjectPRN221.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectPRN221.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,15 @@ namespace ProjectPRN221.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        private ObservableCollection<Inventory> inventoryList;
+        public ObservableCollection<Inventory> InventoryList { 
+            get => inventoryList;
+            set
+            {
+                inventoryList = value;
+                OnPropertyChanged();
+            }
+        }
         public bool Isloaded = false;
         public ICommand LoadedWindowCommand { get; set; }
         public ICommand UnitCommand { get; set; }
@@ -39,6 +50,7 @@ namespace ProjectPRN221.ViewModel
                 if (loginVM.IsLogin)
                 {
                     p.Show();
+                    LoadInventoryData();
                 }
                 else
                 {
@@ -56,6 +68,45 @@ namespace ProjectPRN221.ViewModel
             OutputCommand = new RelayCommand<object>((p) => { return true; }, (p) => { OutputWindow wd = new OutputWindow(); wd.ShowDialog(); });
             //var a  = DataProvider.Instance.DB.Users.ToList();
             //MessageBox.Show(DataProvider.Instance.DB.Users.First().DisplayName);
+
+
+        }
+
+        void LoadInventoryData()
+        {
+            InventoryList = new ObservableCollection<Inventory>();
+            var objectList = DataProvider.Instance.DB.Objects.ToList();
+            int i = 1;
+
+            foreach (var item in objectList)
+            {
+                var inputList = DataProvider.Instance.DB.InputInfos.Where(r => r.IdObject == item.Id);
+                var outputList = DataProvider.Instance.DB.OutputInfos.Where(r => r.IdObject == item.Id);
+
+                int sumInput = 0;
+                int sumOutput = 0;
+                
+                if(inputList != null)
+                {
+                    sumInput = (int)inputList.Sum(r => r.Count);
+
+                }
+                if(outputList != null)
+                {
+                    sumOutput = (int) outputList.Sum(r => r.Count);
+                }
+
+                Inventory inventory = new Inventory();
+                inventory.OrdinalNumber = i;
+                inventory.Count = sumInput - sumOutput;
+                inventory.Object = item;
+
+                InventoryList.Add(inventory);
+
+                i++;
+
+            }
+            
         }
     }
 }

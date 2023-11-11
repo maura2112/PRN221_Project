@@ -7,7 +7,7 @@ namespace ProjectPRN221.Models
     {
         public string Id { get; set; } = null!;
         public string IdObject { get; set; } = null!;
-        public string IdInputInfo { get; set; } = null!;
+        public string IdOutputInfo { get; set; } = null!;
         public int IdCustomer { get; set; }
         public int? Count { get; set; }
         public string? Status { get; set; }
