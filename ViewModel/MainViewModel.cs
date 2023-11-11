@@ -72,7 +72,7 @@ namespace ProjectPRN221.ViewModel
 
         }
 
-        void LoadInventoryData()
+        public void LoadInventoryData()
         {
             InventoryList = new ObservableCollection<Inventory>();
             var objectList = DataProvider.Instance.DB.Objects.ToList();

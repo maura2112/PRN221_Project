@@ -123,13 +123,7 @@ namespace ProjectPRN221.Models
 
                 entity.Property(e => e.IdObject).HasMaxLength(128);
 
-                entity.Property(e => e.IdOutputInfo).HasMaxLength(128);
-
-                entity.HasOne(d => d.IdNavigation)
-                    .WithOne(p => p.OutputInfo)
-                    .HasForeignKey<OutputInfo>(d => d.Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OutputInfo__Id__5165187F");
+                entity.Property(e => e.IdOutput).HasMaxLength(128);
 
                 entity.HasOne(d => d.IdCustomerNavigation)
                     .WithMany(p => p.OutputInfos)
@@ -142,6 +136,12 @@ namespace ProjectPRN221.Models
                     .HasForeignKey(d => d.IdObject)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__OutputInf__Statu__4F7CD00D");
+
+                entity.HasOne(d => d.IdOutputNavigation)
+                    .WithMany(p => p.OutputInfos)
+                    .HasForeignKey(d => d.IdOutput)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__OutputInf__IdOut__5165187F");
             });
 
             modelBuilder.Entity<Suplier>(entity =>
