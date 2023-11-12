@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:ProjectPRN221"
         mc:Ignorable="d"
         
@@ -22,7 +23,7 @@
         
         Name="mainWindow"
         DataContext="{StaticResource MainVM}"
-        Title="Ứng dụng quản lý kho" Height="500" Width="625">
+        Title="Ứng dụng quản lý kho" Height="700" Width="1200">
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
             <b:InvokeCommandAction Command="{Binding LoadedWindowCommand}"
@@ -183,27 +184,54 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+
                                 </Grid.ColumnDefinitions>
 
                                 <Grid Grid.Column="0">
-                                    <DatePicker VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" materialDesign:HintAssist.Hint="Ngày bắt đầu" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                                    <materialDesign:Card Margin="0 0 5 0" DockPanel.Dock="Left">
+                                        <StackPanel Orientation="Horizontal">
+                                            <lvc:PieChart Margin="0 0 0 5" x:Name="PieChart1" Series="{Binding PieChartSeriesCollection,UpdateSourceTrigger=PropertyChanged}"  LegendLocation="Bottom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="200"/>
+                                            <StackPanel>
+                                                <lvc:PieChart Margin="0 0 0 5" x:Name="PieChart2" Series="{Binding PieChartSeriesCollectionForSP,UpdateSourceTrigger=PropertyChanged}"  LegendLocation="{Binding Legend}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="200">
+                                                </lvc:PieChart>
+                                                <TextBlock Padding="0 0 0 5" Visibility="{Binding VisibilityOfTitle}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Các sản phẩm"></TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </materialDesign:Card>
                                 </Grid>
                                 <Grid Grid.Column="1">
-                                    <DatePicker VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" materialDesign:HintAssist.Hint="Ngày kết thúc" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                    <materialDesign:Card>
+                                        <lvc:CartesianChart LegendLocation="Bottom" Margin="0,5,0,5" DockPanel.Dock="Right"  Series="{Binding CartesianChartSeriesCollection}" Width="770">
+                                            <!--<lvc:CartesianChart.Series>
+                                    <lvc:ColumnSeries Values="{Binding CartesianChartSeriesCollection}" ></lvc:ColumnSeries>
+                                </lvc:CartesianChart.Series>-->
+                                            <lvc:CartesianChart.AxisX>
+                                                <lvc:Axis x:Name="labelDefaultValue" ShowLabels="True" MinValue="0" MaxValue="7"  Labels="{Binding Labels}" FontWeight="Bold" Foreground="#FFAEEA00">
+                                                    <lvc:Axis.Separator>
+                                                        <lvc:Separator Step="1" IsEnabled="False"></lvc:Separator>
+                                                    </lvc:Axis.Separator>
+                                                </lvc:Axis>
+                                            </lvc:CartesianChart.AxisX>
+                                            <lvc:CartesianChart.AxisY>
+                                                <lvc:Axis MinValue="0" x:Name="AxisY">
+                                                    <lvc:Axis.Separator>
+                                                        <lvc:Separator Step="{Binding StepY}" IsEnabled="False"></lvc:Separator>
+                                                    </lvc:Axis.Separator>
+                                                </lvc:Axis>
+                                            </lvc:CartesianChart.AxisY>
+
+                                        </lvc:CartesianChart>
+                                    </materialDesign:Card>
                                 </Grid>
-                                <Grid Grid.Column="2">
-                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="5"
-                                            Width="100"
-                                            Content="Lọc"
-                                            ToolTip="Resource name: MaterialDesignRaisedButton"></Button>
-                                </Grid>
+
                             </Grid>
                             <Grid Grid.Row="1">
-                                <Separator Margin="5"></Separator>
+
                             </Grid>
                             <Grid Grid.Row="2">
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -298,6 +326,35 @@
                                         </Grid>
                                     </materialDesign:Card>
                                 </Grid>
+                                <Grid Grid.Column="3">
+                                    <materialDesign:Card Background="#03a9f4"  Margin="5"
+                                                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  
+                                                         Padding="0" Width="200">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" Margin="16 16 16 4"     
+                                                       Text="Tiền lãi"
+                                                       Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+
+                                            </TextBlock>
+                                            <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                                            <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Left"      
+                                                       Text="998568"
+                                                       Style="{StaticResource MaterialDesignTextBlock}">
+                                            </TextBlock>
+                                            <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
+                                                <StackPanel>
+                                                    <!--đưa gì vào thì đưa-->
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </materialDesign:Card>
@@ -317,6 +374,9 @@
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
@@ -330,6 +390,30 @@
                                             Width="100"
                                             Content="Lọc"
                                             ToolTip="Resource name: MaterialDesignRaisedButton"></Button>
+                            </Grid>
+                            <Grid Grid.Column="3">
+                                <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="5"
+                                            Width="100"
+                                            Content="Thống kê"
+                                            Command="{Binding StatisticCommand}" 
+                                            CommandParameter="{Binding ElementName=labelDefaultValue}"
+                                            ToolTip="Resource name: MaterialDesignRaisedButton"></Button>
+                            </Grid>
+                            <Grid Grid.Column="4">
+                                <ComboBox
+                                    Margin="25 0 0 0"
+                                    IsEditable="False"
+                                    ItemsSource="{Binding ListKindDate}"
+                                    SelectedItem="{Binding SelectedKindDate }"
+                                    materialDesign:HintAssist.Hint="Chọn kiểu thời gian thống kê">
+                                </ComboBox>
+                            </Grid>
+                            <Grid Grid.Column="5">
+                                <DatePicker x:Name="ChartDtp" Width="100" SelectedDateFormat="Short" Margin="25 0 0 0"  SelectedDate="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Chọn thời gian" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" >
+                                    <DatePicker.BlackoutDates>
+                                        <CalendarDateRange Start="1/1/0001" End="1/1/1800"/>
+                                    </DatePicker.BlackoutDates>
+                                </DatePicker>
                             </Grid>
                         </Grid>
 

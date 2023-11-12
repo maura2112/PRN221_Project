@@ -10,6 +10,7 @@ namespace ProjectPRN221.Models
         public string IdOutput { get; set; } = null!;
         public int IdCustomer { get; set; }
         public int? Count { get; set; }
+        public int? SumPrice { get; set; }
         public string? Status { get; set; }
 
         public virtual Customer IdCustomerNavigation { get; set; } = null!;
