@@ -4,5 +4,6 @@
                     xmlns:local="clr-namespace:ProjectPRN221.ResourceXAML">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
+    <viewmodel:SuplierViewModel x:Key="SuplierVM"></viewmodel:SuplierViewModel>
     <viewmodel:UnitViewModel x:Key="UnitVM"></viewmodel:UnitViewModel>
 </ResourceDictionary>

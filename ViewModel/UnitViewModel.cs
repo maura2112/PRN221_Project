@@ -165,7 +165,7 @@ namespace ProjectPRN221.ViewModel
                     DataProvider.Instance.DB.SaveChanges();
                     //List.Remove(unit);
 
-                    MessageBox.Show("Xóa thành công", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Xóa thành công");
                     SelectedItem = null;
                     
                 }
