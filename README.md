@@ -51,3 +51,29 @@
 - Status
 ### Report view update every time table changed
 
+### Update
+- Model tạo thêm chỉ dùng để thống kê, không có trong database
+### Statistic (Thống kê)
+- Object
+- OrdinalNumbers
+- Input
+- Output
+- Inventory
+- InputPrice
+- OuputPrice
+- InventoryPrice
+- RevenuePrice
+### Inventory (Tồn kho)
+- Object
+- OrdinalNumber
+- Count
+- CountInput
+- CountOutput
+- CountInventory
+- MoneyInventory
+- MoneyOutput
+- MoneyInput
+- MoneyEarn
+
+
+
