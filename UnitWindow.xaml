@@ -20,7 +20,7 @@
         WindowStartupLocation="CenterScreen"
         x:Name="window"
         DataContext="{StaticResource UnitVM}"
-        Title="Đơn vị đo" Height="500" Width="400">
+        Title="Đơn vị tính" Height="500" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -40,7 +40,7 @@
             <!--các element binding từ selected item-->
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <Grid>
-                    <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="5" materialDesign:HintAssist.Hint="Tên đơn vị đo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="5" materialDesign:HintAssist.Hint="Tên đơn vị tính" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
             </materialDesign:Card>
 
@@ -58,7 +58,7 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                                <GridViewColumn Header="Tên đơn vị đo" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                <GridViewColumn Header="Tên đơn vị tính" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

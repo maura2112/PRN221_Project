@@ -98,21 +98,21 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
-                                <TextBlock Text="Vật tư" HorizontalAlignment="Center"></TextBlock>
+                                <TextBlock Text="Sản phẩm" HorizontalAlignment="Center"></TextBlock>
                             </Grid>
                             <Grid Grid.Row="1">
                                 <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="Dns" />
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="3" Command="{Binding UnitCommand}" ToolTip="Đơn vị đo">
+                    <Button Grid.Column="3" Command="{Binding UnitCommand}" ToolTip="Đơn vị tính">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
-                                <TextBlock Text="Đơn vị đo" HorizontalAlignment="Center"></TextBlock>
+                                <TextBlock Text="Đơn vị tính" HorizontalAlignment="Center"></TextBlock>
                             </Grid>
                             <Grid Grid.Row="1">
                                 <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="Altimeter" />
@@ -195,7 +195,7 @@
                                             <StackPanel>
                                                 <lvc:PieChart Margin="0 0 0 5" x:Name="PieChart2" Series="{Binding PieChartSeriesCollectionForSP,UpdateSourceTrigger=PropertyChanged}"  LegendLocation="{Binding Legend}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="200">
                                                 </lvc:PieChart>
-                                                <TextBlock Padding="0 0 0 5" Visibility="{Binding VisibilityOfTitle}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Các sản phẩm"></TextBlock>
+                                                <TextBlock Padding="0 0 0 5" Visibility="{Binding VisibilityOfTitle}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Sản phẩm"></TextBlock>
                                             </StackPanel>
                                         </StackPanel>
                                     </materialDesign:Card>
@@ -255,7 +255,7 @@
                                             <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
                                             <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
                                                        HorizontalAlignment="Left"      
-                                                       Text="998568"
+                                                       Text="{Binding Statistics.Input}"
                                                        Style="{StaticResource MaterialDesignTextBlock}">
                                             </TextBlock>
                                             <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
@@ -285,7 +285,7 @@
                                             <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
                                             <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
                                                        HorizontalAlignment="Left"      
-                                                       Text="998568"
+                                                       Text="{Binding Statistics.Output}"
                                                        Style="{StaticResource MaterialDesignTextBlock}">
                                             </TextBlock>
                                             <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
@@ -315,7 +315,7 @@
                                             <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
                                             <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
                                                        HorizontalAlignment="Left"      
-                                                       Text="998568"
+                                                       Text="{Binding Statistics.Inventory}"
                                                        Style="{StaticResource MaterialDesignTextBlock}">
                                             </TextBlock>
                                             <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
@@ -344,7 +344,7 @@
                                             <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
                                             <TextBlock Grid.Row="2" Margin="16 0 16 8" VerticalAlignment="Center" 
                                                        HorizontalAlignment="Left"      
-                                                       Text="998568"
+                                                       Text="{Binding Statistics.RevenuePrice}"
                                                        Style="{StaticResource MaterialDesignTextBlock}">
                                             </TextBlock>
                                             <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
@@ -431,8 +431,13 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="STT" DisplayMemberBinding="{Binding OrdinalNumber}"></GridViewColumn>
-                                        <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding Object.DisplayName}"></GridViewColumn>
+                                        <GridViewColumn Header="Tên sản phẩm" DisplayMemberBinding="{Binding Object.DisplayName}"></GridViewColumn>
                                         <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+                                        <GridViewColumn Header="Số lượng nhập vào" DisplayMemberBinding="{Binding CountInput}"></GridViewColumn>
+                                        <GridViewColumn Header="Giá nhập" DisplayMemberBinding="{Binding MoneyInput}"></GridViewColumn>
+                                        <GridViewColumn Header="Số lượng bán ra" DisplayMemberBinding="{Binding CountOutput}"></GridViewColumn>
+                                        <GridViewColumn Header="Giá bán" DisplayMemberBinding="{Binding MoneyOutput}"></GridViewColumn>
+                                        <GridViewColumn Header="Tiền lãi" DisplayMemberBinding="{Binding MoneyEarn}"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>
                             </ListView>

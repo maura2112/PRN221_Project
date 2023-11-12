@@ -316,7 +316,7 @@ namespace ProjectPRN221.ViewModel
                 {
                     if (objectItem.IdObject == item.Id)
                     {
-                        tienXuat = (double)objectItem.SumPrice;
+                        tienXuat = (double)(objectItem.SumPrice);
                         tongTienXuat += tienXuat;
                     }
                 }
@@ -357,7 +357,7 @@ namespace ProjectPRN221.ViewModel
                 Statistics.InputPrice += inventory.MoneyInput;
                 Statistics.OuputPrice += inventory.MoneyOutput;
                 Statistics.Inventory += inventory.CountInventory;
-                //ThongKe.GiaTon = tongTienTon;
+                //Statistics.InventoryPrice += inventory.MoneyInventory;
                 Statistics.RevenuePrice += inventory.MoneyEarn;
 
             }
