@@ -380,15 +380,21 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
-                                <DatePicker VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" materialDesign:HintAssist.Hint="Ngày bắt đầu" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                <TextBox Text="{Binding Filter}" IsReadOnly="{Binding ReadOnly}" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="115" Margin="0,-2,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Nhập tên sản phẩm" />
                             </Grid>
-                            <Grid Grid.Column="1">
-                                <DatePicker VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" materialDesign:HintAssist.Hint="Ngày kết thúc" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                            </Grid>
+                            <ComboBox
+                                Grid.Column="1"
+                                Margin="15,0,10,0"
+                                IsEditable="False"
+                                ItemsSource="{Binding ListKindObject}"
+                                SelectedItem="{Binding SelectedKindObject }"
+                                materialDesign:HintAssist.Hint="Lọc theo">
+                            </ComboBox>
                             <Grid Grid.Column="2">
                                 <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="5"
                                             Width="100"
                                             Content="Lọc"
+                                            Command="{Binding FilterCommand}" 
                                             ToolTip="Resource name: MaterialDesignRaisedButton"></Button>
                             </Grid>
                             <Grid Grid.Column="3">
@@ -409,7 +415,7 @@
                                 </ComboBox>
                             </Grid>
                             <Grid Grid.Column="5">
-                                <DatePicker x:Name="ChartDtp" Width="100" SelectedDateFormat="Short" Margin="25 0 0 0"  SelectedDate="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Chọn thời gian" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" >
+                                <DatePicker x:Name="ChartDtp" Width="100" SelectedDateFormat="Short" Margin="25,-2,0,0"  SelectedDate="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Chọn thời gian" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" >
                                     <DatePicker.BlackoutDates>
                                         <CalendarDateRange Start="1/1/0001" End="1/1/1800"/>
                                     </DatePicker.BlackoutDates>

@@ -28,6 +28,8 @@ namespace ProjectPRN221.ViewModel
 
         public ICommand StatisticCommand { get; set; }
 
+        public ICommand FilterCommand { get; set; }
+
 
 
         private ObservableCollection<Inventory> inventoryList;
@@ -106,8 +108,6 @@ namespace ProjectPRN221.ViewModel
                             break;
                     }
                 });
-
-
             ListKindDate = new List<string>() { };
             ListKindDate.Add("Năm");
             ListKindDate.Add("Tháng");
@@ -115,13 +115,28 @@ namespace ProjectPRN221.ViewModel
             ListKindDate.Add("Ngày");
 
             ListKindObject = new List<string>() { };
-            ListKindObject.Add("Không chọn");
-            ListKindObject.Add("Hàng bán chạy nhất");
-            ListKindObject.Add("Hàng bán ế nhất");
+            ListKindObject.Add("Tên");
+            ListKindObject.Add("Sản phẩm bán chạy nhất");
+            ListKindObject.Add("Sản phẩm ít người mua nhất");
+
+            FilterCommand = new RelayCommand<object>(
+                (p) =>
+                {
+                    if (SelectedKindObject == null && Filter == null)
+                        return false;
+                    return true;
+                }, (p) =>
+                {
+
+                    LoadFilter(SelectedKindObject);
+
+                });
 
         }
 
-        #region property cho chart
+
+
+        #region property cho charts
         private List<DataForCharts> _DataForChart;
         public List<DataForCharts> DataForChart { get => _DataForChart; set { _DataForChart = value; OnPropertyChanged(); } }
 
@@ -130,7 +145,6 @@ namespace ProjectPRN221.ViewModel
 
         private SeriesCollection _PieChartSeriesCollectionForSP;
         public SeriesCollection PieChartSeriesCollectionForSP { get => _PieChartSeriesCollectionForSP; set { _PieChartSeriesCollectionForSP = value; OnPropertyChanged(); } }
-
 
         private SeriesCollection _CartesianChartSeriesCollection;
         public SeriesCollection CartesianChartSeriesCollection { get => _CartesianChartSeriesCollection; set { _CartesianChartSeriesCollection = value; OnPropertyChanged(); } }
@@ -165,12 +179,98 @@ namespace ProjectPRN221.ViewModel
         private String _SelectedKindDate;
         public String SelectedKindDate { get => _SelectedKindDate; set { _SelectedKindDate = value; OnPropertyChanged(); } }
 
-        private List<String> _ListKindObject;
-        public List<String> ListKindObject { get => _ListKindObject; set { _ListKindObject = value; OnPropertyChanged(); } }
+
 
         #endregion
 
+        #region Lọc
+        private bool _ReadOnly;
+        public bool ReadOnly { get => _ReadOnly; set { _ReadOnly = value; OnPropertyChanged(); } }
 
+        private string _Filter;
+        public string Filter { get => _Filter; set { _Filter = value; OnPropertyChanged(); } }
+
+        private List<string> _ListKindObject;
+        public List<string> ListKindObject { get => _ListKindObject; set { _ListKindObject = value; OnPropertyChanged(); } }
+
+        private string _SelectedKindObject;
+        public string SelectedKindObject
+        {
+            get => _SelectedKindObject;
+            set
+            {
+                _SelectedKindObject = value;
+                OnPropertyChanged();
+                if (SelectedKindObject != null && SelectedKindObject != "Tên")
+                {
+                    Filter = "";
+                    ReadOnly = true;
+                }
+                else
+                {
+                    ReadOnly = false;
+                }
+            }
+        }
+
+        public void LoadFilter(String kindObject)
+        {
+            if (SelectedKindObject != null && SelectedKindObject != "Tên")
+            {
+                LoadInventoryData(true);
+
+                if (kindObject == "Sản phẩm bán chạy nhất")
+                {
+                    var Max = InventoryList.Max(p => p.CountOutput);
+                    var ListFilter = InventoryList.Where(p => p.CountOutput == Max).ToList();
+                    InventoryList.Clear();
+                    foreach (Inventory item in ListFilter)
+                    {
+                        InventoryList.Add(item);
+                    }
+                }
+                else if (kindObject == "Sản phẩm ít người mua nhất")
+                {
+                    var Min = InventoryList.Min(p => p.CountOutput);
+                    var ListFilter = InventoryList.Where(p => p.CountOutput == Min).ToList();
+                    InventoryList.Clear();
+                    foreach (Inventory item in ListFilter)
+                    {
+                        InventoryList.Add(item);
+                    }
+                }
+
+            }
+            else
+            {
+                LoadInventoryData(true);
+                 
+                if (Filter == null)
+                {
+                    MessageBox.Show("Vui lòng nhập tên sản phẩm!");
+                }
+                else
+                {
+                    var ListFilter = InventoryList
+                    .Where(p => p.Object.DisplayName.ToLower().Replace(" ", "").Contains(Filter.ToLower().Replace(" ", "")))
+                    .ToList();
+                    InventoryList.Clear();
+                    
+                    
+                    foreach (Inventory item in ListFilter)
+                    {
+                        InventoryList.Add(item);
+                    }
+                    if (ListFilter.Count == 0)
+                    {
+                        MessageBox.Show("Không có sản phẩm phù hợp!");
+                    }
+                }
+                
+
+            }
+        }
+        #endregion
 
 
         public void LoadInventoryData(bool flag)
@@ -265,6 +365,9 @@ namespace ProjectPRN221.ViewModel
             {
                 LoadChart(Statistics);
             }
+           
+
+
 
 
         }
