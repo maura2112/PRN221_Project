@@ -86,10 +86,10 @@ D:\Sem7\PRN2\ProjectPRN221\obj\Debug\net6.0-windows\refint\ProjectPRN221.dll
 D:\Sem7\PRN2\ProjectPRN221\obj\Debug\net6.0-windows\ProjectPRN221.pdb
 D:\Sem7\PRN2\ProjectPRN221\obj\Debug\net6.0-windows\ProjectPRN221.genruntimeconfig.cache
 D:\Sem7\PRN2\ProjectPRN221\obj\Debug\net6.0-windows\ref\ProjectPRN221.dll
-D:\Sem7\PRN2\PRN221_Project\bin\Debug\net6.0-windows\ProjectPRN221.dll
 D:\Sem7\PRN2\PRN221_Project\bin\Debug\net6.0-windows\ProjectPRN221.exe
 D:\Sem7\PRN2\PRN221_Project\bin\Debug\net6.0-windows\ProjectPRN221.deps.json
 D:\Sem7\PRN2\PRN221_Project\bin\Debug\net6.0-windows\ProjectPRN221.runtimeconfig.json
+D:\Sem7\PRN2\PRN221_Project\bin\Debug\net6.0-windows\ProjectPRN221.dll
 D:\Sem7\PRN2\PRN221_Project\bin\Debug\net6.0-windows\ProjectPRN221.pdb
 D:\Sem7\PRN2\PRN221_Project\bin\Debug\net6.0-windows\Humanizer.dll
 D:\Sem7\PRN2\PRN221_Project\bin\Debug\net6.0-windows\LiveCharts.dll

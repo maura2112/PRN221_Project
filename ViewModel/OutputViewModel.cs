@@ -231,7 +231,7 @@ namespace ProjectPRN221.ViewModel
             {
                 if (CountObject() < Count)
                 {
-                    MessageBox.Show("Hàng trong kho đã hết");
+                    MessageBox.Show("Sản phẩm trong kho đã hết");
                 }
                 else
                 {
@@ -265,7 +265,7 @@ namespace ProjectPRN221.ViewModel
                             break;
                         }
                     }
-                    MessageBox.Show("Dữ liệu đã được sửa thành công", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Sửa thành công", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
 
             });
@@ -282,7 +282,7 @@ namespace ProjectPRN221.ViewModel
 
             }, (p) =>
             {
-                if (MessageBox.Show("Bạn có chắc muốn xóa dữ liệu này?",
+                if (MessageBox.Show("Bạn có chắc muốn xóa phiếu xuất này?",
                             "Cautions", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 {
 

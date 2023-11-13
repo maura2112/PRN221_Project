@@ -49,7 +49,7 @@
                         ItemsSource="{Binding ListObject}"
                         SelectedItem="{Binding SelectedObject , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}">
                     </ComboBox>
-                    <DatePicker VerticalAlignment="Center" SelectedDate="{Binding DateOnput}" Width="100" Margin="5 5 15 -7" materialDesign:HintAssist.Hint="Ngày xuất" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    <DatePicker VerticalAlignment="Center" SelectedDate="{Binding DateOutput}" Width="100" Margin="5 5 15 -7" materialDesign:HintAssist.Hint="Ngày xuất" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     <TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox Text="{Binding PriceOutput, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Giá xuất" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <ComboBox Margin="5 5 15 5" ItemsSource="{Binding ListCustomer}" DisplayMemberPath="DisplayName" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Khách hàng" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>

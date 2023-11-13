@@ -19,7 +19,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         x:Name="window"
-        
+        DataContext="{StaticResource UserVM}"
         Title="Người dùng" Height="500" Width="700">
     <Grid>
         <Grid.RowDefinitions>
