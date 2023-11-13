@@ -1,5 +1,5 @@
 # PRN221_Project
-### Ứng dụng "Quản lý kho của cửa hàng bán nước hoa" *(WPF – MVVM)
+### Ứng dụng "Quản lý kho của cửa hàng nước hoa Maura" *(WPF – MVVM)
 # Đặc tả
 ### Object (Đối tượng)
 - Id

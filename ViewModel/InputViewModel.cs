@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectPRN221.ViewModel
 {
@@ -110,11 +111,9 @@ namespace ProjectPRN221.ViewModel
         {
 
 
-            var ListInputInfo = DataProvider.Instance.DB.InputInfos;
-            if (ListInputInfo != null)
-            {
-                List = new ObservableCollection<InputInfo>(ListInputInfo);
-            }
+
+
+            List = new ObservableCollection<InputInfo>(DataProvider.Instance.DB.InputInfos.Include(r => r.IdInputNavigation).ToList());
 
             var ListObjects = DataProvider.Instance.DB.Objects;
             if (ListObjects != null)
@@ -127,7 +126,7 @@ namespace ProjectPRN221.ViewModel
             AddCommand = new RelayCommand<object>((p) =>
             {
 
-                if (SelectedObject == null || SelectedInput.DateInput == null || Count == 0 )
+                if (SelectedObject == null || SelectedInput.DateInput == null || Count == 0)
                     return false;
 
                 return true;
@@ -171,7 +170,8 @@ namespace ProjectPRN221.ViewModel
                 }
             });
 
-            EditCommand = new RelayCommand<ListView>((p) => {
+            EditCommand = new RelayCommand<ListView>((p) =>
+            {
                 if (SelectedItem == null || SelectedObject == null || SelectedInput == null || Count == 0)
                     return false;
 
@@ -180,7 +180,8 @@ namespace ProjectPRN221.ViewModel
                     return true;
                 return false;
 
-            }, (p) => {
+            }, (p) =>
+            {
                 if (InputPrice > OutputPrice)
                 {
                     MessageBox.Show("Giá xuất phải lớn hơn giá nhập");
@@ -221,7 +222,8 @@ namespace ProjectPRN221.ViewModel
 
             });
 
-            DeleteCommand = new RelayCommand<InputInfo>((p) => {
+            DeleteCommand = new RelayCommand<InputInfo>((p) =>
+            {
                 if (SelectedItem == null || SelectedObject == null || SelectedInput == null)
                     return false;
 
@@ -230,7 +232,8 @@ namespace ProjectPRN221.ViewModel
                     return true;
                 return false;
 
-            }, (p) => {
+            }, (p) =>
+            {
                 if (MessageBox.Show("Bạn có chắc muốn xóa phiếu xuất này?",
                             "Cautions", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 {

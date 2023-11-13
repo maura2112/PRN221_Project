@@ -245,7 +245,7 @@ namespace ProjectPRN221.ViewModel
             else
             {
                 LoadInventoryData(true);
-                 
+
                 if (Filter == null)
                 {
                     MessageBox.Show("Vui lòng nhập tên sản phẩm!");
@@ -256,8 +256,8 @@ namespace ProjectPRN221.ViewModel
                     .Where(p => p.Object.DisplayName.ToLower().Replace(" ", "").Contains(Filter.ToLower().Replace(" ", "")))
                     .ToList();
                     InventoryList.Clear();
-                    
-                    
+
+
                     foreach (Inventory item in ListFilter)
                     {
                         InventoryList.Add(item);
@@ -267,8 +267,8 @@ namespace ProjectPRN221.ViewModel
                         MessageBox.Show("Không có sản phẩm phù hợp!");
                     }
                 }
-                
-               
+
+
 
             }
         }
@@ -284,9 +284,6 @@ namespace ProjectPRN221.ViewModel
             int luongXuat = 0;
 
 
-            double tongTienTon = 0;
-            double tongTienLai = 0;
-
             var dataInputInfo = DataProvider.Instance.DB.InputInfos;
             var dataOutputInfo = DataProvider.Instance.DB.OutputInfos;
 
@@ -294,8 +291,8 @@ namespace ProjectPRN221.ViewModel
 
             foreach (var item in objectList)
             {
-                double tongTienXuat = 0;
-                double tongTienNhap = 0;
+                double tongoutputPrice = 0;
+                double totalInputPrice = 0;
 
                 var inputList = DataProvider.Instance.DB.InputInfos.Where(r => r.IdObject == item.Id);
                 var outputList = DataProvider.Instance.DB.OutputInfos.Where(r => r.IdObject == item.Id);
@@ -303,14 +300,14 @@ namespace ProjectPRN221.ViewModel
                 int sumInput = 0;
                 int sumOutput = 0;
 
-                double tienNhap = 0;
-                double tienXuat = 0;
+                double inputPrice = 0;
+                double outputPrice = 0;
                 foreach (var objectItem in dataInputInfo)
                 {
                     if (objectItem.IdObject == item.Id)
                     {
-                        tienNhap = (double)(objectItem.Count * objectItem.InputPrice);
-                        tongTienNhap += tienNhap;
+                        inputPrice = (double)(objectItem.Count * objectItem.InputPrice);
+                        totalInputPrice += inputPrice;
                     }
                 }
 
@@ -318,15 +315,15 @@ namespace ProjectPRN221.ViewModel
                 {
                     if (objectItem.IdObject == item.Id)
                     {
-                        tienXuat = (double)(objectItem.SumPrice);
-                        tongTienXuat += tienXuat;
+                        outputPrice = (double)(objectItem.SumPrice);
+                        tongoutputPrice += outputPrice;
                     }
                 }
 
                 if (inputList != null && inputList.Count() != 0)
                 {
                     sumInput = (int)inputList.Sum(r => r.Count);
-                    tienNhap = (double)inputList.Sum(p => p.InputPrice);
+                    inputPrice = (double)inputList.Sum(p => p.InputPrice);
 
                 }
                 if (outputList != null && outputList.Count() != 0)
@@ -341,15 +338,18 @@ namespace ProjectPRN221.ViewModel
                 inventory.CountInput = sumInput;
                 inventory.CountOutput = sumOutput;
                 inventory.CountInventory = sumInput - sumOutput;
-                inventory.MoneyInput = tongTienNhap;
-                inventory.MoneyOutput = tongTienXuat;
+                inventory.MoneyInput = totalInputPrice;
+                inventory.MoneyOutput = tongoutputPrice;
 
-                if (tongTienXuat - tongTienNhap > 0)
+                if (tongoutputPrice - totalInputPrice > 0)
                 {
-                    inventory.MoneyEarn = tongTienXuat - tongTienNhap;
+                    inventory.MoneyEarn = tongoutputPrice - totalInputPrice;
                 }
                 else
+                {
                     inventory.MoneyEarn = 0;
+                }
+
                 inventory.Object = item;
                 InventoryList.Add(inventory);
                 i++;
@@ -367,7 +367,7 @@ namespace ProjectPRN221.ViewModel
             {
                 LoadChart(Statistics);
             }
-           
+
 
 
 
@@ -376,7 +376,6 @@ namespace ProjectPRN221.ViewModel
         #region các hàm xử lý chart
         public void LoadChart(Statistic statistic)
         {
-            /*================================Test chart====================================*/
             PieChartSeriesCollection = new SeriesCollection();
             DictionaryOfData = new Dictionary<string, int>();
             float tong = (statistic.Inventory + statistic.Output);
@@ -443,7 +442,8 @@ namespace ProjectPRN221.ViewModel
             {
                 var groupByYear = DataProvider.Instance.DB.OutputInfos.Where(p => p.IdOutputNavigation.DateOutput.Value.Year == SelectedDate.Value.Year);
                 var groupByMonth = groupByYear.GroupBy(p => p.IdOutputNavigation.DateOutput.Value.Month).
-                          Select(pp => new
+                          Select(pp => 
+                          new
                           {
                               pp.Key,
                               SUM = pp.Sum(ppp => ppp.Count)
@@ -560,7 +560,7 @@ namespace ProjectPRN221.ViewModel
 
         public void LoadChartByWeek()
         {
-           
+
             SelectedKindDate = "Tuần";
             //string[] weekDays = new CultureInfo("en-us").DateTimeFormat.DayNames.;
             //swap<string>(weekDays, 0, weekDays.Length - 1);
@@ -586,7 +586,7 @@ namespace ProjectPRN221.ViewModel
 
         public void LoadChartByDay()
         {
-            
+
             string[] weekDays = new[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
             DictionaryOfData = new Dictionary<string, int>();

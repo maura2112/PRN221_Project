@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectPRN221.ViewModel
 {
@@ -78,7 +79,7 @@ namespace ProjectPRN221.ViewModel
                     Count = SelectedItem.Count;
                     Status = SelectedItem.Status;
                     OutputPrice = SelectedItem.SumPrice;
-                    //SelectedCustomerText = SelectedItem.IdCustomerNavigation.DisplayName;
+                    SelectedCustomerText = SelectedItem.IdCustomerNavigation.DisplayName;
                     //SelectedObjectText = SelectedItem.IdObjectNavigation.DisplayName;
                 }
             }
@@ -125,7 +126,7 @@ namespace ProjectPRN221.ViewModel
         {
             //Input = new ObservableCollection<Model.Input>(DataProvider.Instance.DB.Inputs);
 
-                List = new ObservableCollection<OutputInfo>(DataProvider.Instance.DB.OutputInfos);
+                List = new ObservableCollection<OutputInfo>(DataProvider.Instance.DB.OutputInfos.Include(r => r.IdOutputNavigation).ToList());
 
 
             var ListObjects = DataProvider.Instance.DB.Objects;
@@ -213,7 +214,7 @@ namespace ProjectPRN221.ViewModel
 
             EditCommand = new RelayCommand<ListView>((p) =>
             {
-                if (SelectedObject == null || SelectedItem == null || Count == 0 )
+                if (SelectedObject == null || SelectedItem == null || Count == 0  )
                     return false;
 
                 var displayList = DataProvider.Instance.DB.Outputs.Where(x => x.Id == SelectedItem.IdOutput);
@@ -249,7 +250,8 @@ namespace ProjectPRN221.ViewModel
                                 Id = SelectedItem.Id,
                                 IdOutputNavigation = List[i].IdOutputNavigation,
                                 IdObject = SelectedObject.Id,
-                                Count = Count,
+                                Count = Count,                          
+                                IdCustomerNavigation = SelectedItem.IdCustomerNavigation,
                                 Status = Status,
                                 IdObjectNavigation = SelectedObject,
                                 SumPrice = (int?)(PriceObject.OutputPrice * Count)

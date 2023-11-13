@@ -23,7 +23,7 @@
         
         Name="mainWindow"
         DataContext="{StaticResource MainVM}"
-        Title="Ứng dụng quản lý kho" Height="700" Width="1200">
+        Title="Ứng dụng quản lý kho cửa hàng nước hoa Maura" Height="700" Width="1200">
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
             <b:InvokeCommandAction Command="{Binding LoadedWindowCommand}"

@@ -135,11 +135,11 @@ namespace ProjectPRN221.ViewModel
                 if (flag)
                 {
                     // nham string voi int cuu voi huhu
-                    var lastObjectId = DataProvider.Instance.DB.Objects.OrderByDescending(o => o.Id).FirstOrDefault().Id;
-                    var newId = lastObjectId + 1;
+                    //var lastObjectId = DataProvider.Instance.DB.Objects.OrderByDescending(o => o.Id).FirstOrDefault().Id;
+                    //var newId = lastObjectId + 1;
                     var newObject = new Models.Object()
                     {
-                        Id = newId,
+                        Id = Guid.NewGuid().ToString(),
                         DisplayName = DisplayName,
                         IdSuplier = SelectedSuplier.Id,
                         IdUnit = SelectedUnit.Id,

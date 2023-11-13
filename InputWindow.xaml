@@ -46,7 +46,7 @@
                         IsEditable="False"
                         DisplayMemberPath="DisplayName"
                         SelectedItem="{Binding SelectedObject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                        materialDesign:HintAssist.Hint="Tên hàng hóa" 
+                        materialDesign:HintAssist.Hint="Tên sản phẩm" 
                         
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                         <ComboBox.Text>
