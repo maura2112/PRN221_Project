@@ -212,8 +212,8 @@ namespace ProjectPRN221.ViewModel
                                 OutputPrice = OutputPrice,
                                 Status = Status
                             };
-                            p.SelectedItem = List[i];
-                            break;
+                            //p.SelectedItem = List[i];
+                            //break;
                         }
                     }
                     MessageBox.Show("Sửa thành công", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);

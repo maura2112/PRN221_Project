@@ -25,10 +25,9 @@ namespace ProjectPRN221.ViewModel
         public ICommand UserCommand { get; set; }
         public ICommand InputCommand { get; set; }
         public ICommand OutputCommand { get; set; }
-
         public ICommand StatisticCommand { get; set; }
-
         public ICommand FilterCommand { get; set; }
+        public ICommand RefreshCommand { get; set; }
 
 
 
@@ -131,6 +130,8 @@ namespace ProjectPRN221.ViewModel
                     LoadFilter(SelectedKindObject);
 
                 });
+
+            RefreshCommand = new RelayCommand<object>((p) => { return true; }, (p) => { LoadInventoryData(false); });
 
         }
 
@@ -267,6 +268,7 @@ namespace ProjectPRN221.ViewModel
                     }
                 }
                 
+               
 
             }
         }
@@ -423,10 +425,6 @@ namespace ProjectPRN221.ViewModel
                     VisibilityOfTitle = Visibility.Visible;
                 }
             }
-
-            MaxValue = 7;
-            LoadChartByWeek();
-
         }
 
         public void LoadChartByYear()
@@ -437,7 +435,7 @@ namespace ProjectPRN221.ViewModel
             CartesianChartSeriesCollection.Add(
                 new ColumnSeries
                 {
-                    Title = "Tổng hàng bán được",
+                    Title = "Tổng hàng bán được trong năm " + SelectedDate.Value.Year + " - ",
                     Values = new ChartValues<int> { }
                 });
 
@@ -489,7 +487,7 @@ namespace ProjectPRN221.ViewModel
             CartesianChartSeriesCollection.Add(
                 new ColumnSeries
                 {
-                    Title = "Tổng hàng bán được",
+                    Title = "Tổng hàng bán được trong tháng " + SelectedDate.Value.Month + " - ",
                     Values = new ChartValues<int> { }
                 });
 
@@ -562,7 +560,7 @@ namespace ProjectPRN221.ViewModel
 
         public void LoadChartByWeek()
         {
-            SelectedDate = DateTime.Now;
+           
             SelectedKindDate = "Tuần";
             //string[] weekDays = new CultureInfo("en-us").DateTimeFormat.DayNames.;
             //swap<string>(weekDays, 0, weekDays.Length - 1);
@@ -574,49 +572,13 @@ namespace ProjectPRN221.ViewModel
             CartesianChartSeriesCollection.Add(
                 new ColumnSeries
                 {
-                    Title = "Tổng hàng bán được",
+                    Title = "Cái thống kê theo tuần em không biết xử lý huhu =(((",
                     Values = new ChartValues<int> { }
                 });
 
             if (SelectedDate != null)
             {
-                var groupByYear = DataProvider.Instance.DB.OutputInfos.Where(p => p.IdOutputNavigation.DateOutput.Value.Year == SelectedDate.Value.Year);
-                var groupByMonth = groupByYear.Where(p => p.IdOutputNavigation.DateOutput.Value.Month == SelectedDate.Value.Month);
-
-                var monday = SelectedDate.Value.AddDays(-(int)SelectedDate.Value.DayOfWeek + (int)DayOfWeek.Monday);
-                var sunday = SelectedDate.Value.AddDays(7 - (int)SelectedDate.Value.DayOfWeek);
-
-                var groupByDay = groupByMonth.Where(p => (p.IdOutputNavigation.DateOutput.Value >= monday) && (p.IdOutputNavigation.DateOutput.Value <= sunday)).ToList();
-                var groupByWeek = groupByDay.GroupBy(p => p.IdOutputNavigation.DateOutput.Value.DayOfWeek).
-                Select(pp => new
-                {
-                    pp.Key,
-                    SUM = pp.Sum(ppp => ppp.Count)
-                }).ToList();
-                if (groupByWeek.Count() != 0)
-                {
-                    for (int i = 0; i < weekDays.Length; i++)
-                    {
-                        bool flag = false;
-                        for (int j = 0; j < groupByWeek.Count(); j++)
-                        {
-                            if (groupByWeek[j].Key.ToString() == weekDays[i])
-                            {
-                                CartesianChartSeriesCollection[0].Values.Add(groupByWeek[j].SUM);
-                                flag = true;
-                                break;
-                            }
-                            else
-                            {
-                                flag = false;
-                            }
-                        }
-                        if (flag == false)
-                        {
-                            CartesianChartSeriesCollection[0].Values.Add(0);
-                        }
-                    }
-                }
+                //khum biết xử lý tuần huhu
                 Labels = new[] { "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật" };
             }
         }
@@ -624,6 +586,7 @@ namespace ProjectPRN221.ViewModel
 
         public void LoadChartByDay()
         {
+            
             string[] weekDays = new[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
             DictionaryOfData = new Dictionary<string, int>();

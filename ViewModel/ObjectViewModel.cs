@@ -74,9 +74,6 @@ namespace ProjectPRN221.ViewModel
         public string SelectedSuplierText { get => _SelectedSuplierText; set { _SelectedSuplierText = value; OnPropertyChanged(); } }
 
 
-        private bool _ValidateErrorDisplayName;
-        public bool ValidateErrorDisplayName { get => _ValidateErrorDisplayName; set { _ValidateErrorDisplayName = value; OnPropertyChanged(); } }
-
 
 
         /*Chức năng nút*/
@@ -118,7 +115,7 @@ namespace ProjectPRN221.ViewModel
             }
 
             AddCommand = new RelayCommand<ListView>((p) => {
-                if (string.IsNullOrEmpty(DisplayName) || SelectedUnit == null || SelectedSuplier == null || ValidateErrorDisplayName == true)
+                if (string.IsNullOrEmpty(DisplayName) || SelectedUnit == null || SelectedSuplier == null )
                 {
                     return false;
                 }
@@ -159,7 +156,7 @@ namespace ProjectPRN221.ViewModel
 
             EditCommand = new RelayCommand<ListView>((p) => {
 
-                if (string.IsNullOrEmpty(DisplayName) || SelectedItem == null || SelectedUnit == null || SelectedSuplier == null || ValidateErrorDisplayName == true)//string.IsNullOrEmpty(QRCode) || string.IsNullOrEmpty(BarCode) ||
+                if (string.IsNullOrEmpty(DisplayName) || SelectedItem == null || SelectedUnit == null || SelectedSuplier == null )//string.IsNullOrEmpty(QRCode) || string.IsNullOrEmpty(BarCode) ||
                 {
                     return false;
                 }

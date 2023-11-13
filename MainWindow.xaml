@@ -377,6 +377,7 @@
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
@@ -421,6 +422,14 @@
                                     </DatePicker.BlackoutDates>
                                 </DatePicker>
                             </Grid>
+                            <Grid Grid.Column="6">
+                                <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="5"
+                                            Width="100"
+                                            Content="Làm mới"
+                                            Command="{Binding RefreshCommand}" 
+                                            CommandParameter="{Binding ElementName=labelDefaultValue}"
+                                            ToolTip="Resource name: MaterialDesignRaisedButton"></Button>
+                            </Grid>
                         </Grid>
 
                         <Grid Grid.Row="1">
@@ -433,10 +442,10 @@
                                         <GridViewColumn Header="STT" DisplayMemberBinding="{Binding OrdinalNumber}"></GridViewColumn>
                                         <GridViewColumn Header="Tên sản phẩm" DisplayMemberBinding="{Binding Object.DisplayName}"></GridViewColumn>
                                         <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
-                                        <GridViewColumn Header="Số lượng nhập vào" DisplayMemberBinding="{Binding CountInput}"></GridViewColumn>
-                                        <GridViewColumn Header="Tổng nhập" DisplayMemberBinding="{Binding MoneyInput}"></GridViewColumn>
-                                        <GridViewColumn Header="Số lượng bán ra" DisplayMemberBinding="{Binding CountOutput}"></GridViewColumn>
-                                        <GridViewColumn Header="Tổng bán" DisplayMemberBinding="{Binding MoneyOutput}"></GridViewColumn>
+                                        <GridViewColumn Header="Số lượng nhập" DisplayMemberBinding="{Binding CountInput}"></GridViewColumn>
+                                        <GridViewColumn Header="Tổng tiền nhập" DisplayMemberBinding="{Binding MoneyInput}"></GridViewColumn>
+                                        <GridViewColumn Header="Số lượng bán" DisplayMemberBinding="{Binding CountOutput}"></GridViewColumn>
+                                        <GridViewColumn Header="Tổng tiền bán" DisplayMemberBinding="{Binding MoneyOutput}"></GridViewColumn>
                                         <GridViewColumn Header="Tiền lãi" DisplayMemberBinding="{Binding MoneyEarn}"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>

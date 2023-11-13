@@ -114,8 +114,6 @@ namespace ProjectPRN221.ViewModel
         private string _ComboBoxText;
         public string ComboBoxText { get => _ComboBoxText; set { _ComboBoxText = value; OnPropertyChanged(); } }
 
-        private bool _ValidateErrorCount;
-        public bool ValidateErrorCount { get => _ValidateErrorCount; set { _ValidateErrorCount = value; OnPropertyChanged(); } }
 
         /*Chức năng nút*/
         public ICommand AddCommand { get; set; }
@@ -127,12 +125,8 @@ namespace ProjectPRN221.ViewModel
         {
             //Input = new ObservableCollection<Model.Input>(DataProvider.Instance.DB.Inputs);
 
-            var ListOutputInfo = DataProvider.Instance.DB.OutputInfos;
-            if (ListOutputInfo != null)
-            {
-                List = new ObservableCollection<OutputInfo>(ListOutputInfo);
+                List = new ObservableCollection<OutputInfo>(DataProvider.Instance.DB.OutputInfos);
 
-            }
 
             var ListObjects = DataProvider.Instance.DB.Objects;
             if (ListObjects != null)
@@ -149,7 +143,7 @@ namespace ProjectPRN221.ViewModel
             AddCommand = new RelayCommand<object>((p) =>
             {
 
-                if (SelectedObject == null || Count == null || ValidateErrorCount == true || Count == 0 || SelectedCustomer == null)
+                if (SelectedObject == null || Count == null || Count == 0 || SelectedCustomer == null)
                     return false;
 
                 return true;
@@ -219,7 +213,7 @@ namespace ProjectPRN221.ViewModel
 
             EditCommand = new RelayCommand<ListView>((p) =>
             {
-                if (SelectedObject == null || SelectedItem == null || Count == 0 || ValidateErrorCount == true)
+                if (SelectedObject == null || SelectedItem == null || Count == 0 )
                     return false;
 
                 var displayList = DataProvider.Instance.DB.Outputs.Where(x => x.Id == SelectedItem.IdOutput);
@@ -261,8 +255,8 @@ namespace ProjectPRN221.ViewModel
                                 SumPrice = (int?)(PriceObject.OutputPrice * Count)
                             };
                             SelectedItem = List[i];
-                            p.SelectedItem = SelectedItem;
-                            break;
+                            //p.SelectedItem = SelectedItem;
+                            //break;
                         }
                     }
                     MessageBox.Show("Sửa thành công", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
