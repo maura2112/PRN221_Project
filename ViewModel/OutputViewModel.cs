@@ -78,8 +78,8 @@ namespace ProjectPRN221.ViewModel
                     Count = SelectedItem.Count;
                     Status = SelectedItem.Status;
                     OutputPrice = SelectedItem.SumPrice;
-                    SelectedCustomerText = SelectedItem.IdCustomerNavigation.DisplayName;
-                    SelectedObjectText = SelectedItem.IdObjectNavigation.DisplayName;
+                    //SelectedCustomerText = SelectedItem.IdCustomerNavigation.DisplayName;
+                    //SelectedObjectText = SelectedItem.IdObjectNavigation.DisplayName;
                 }
             }
         }
@@ -149,7 +149,7 @@ namespace ProjectPRN221.ViewModel
             AddCommand = new RelayCommand<object>((p) =>
             {
 
-                if (SelectedObject == null || Count == null || ValidateErrorCount == true || Count == 0)
+                if (SelectedObject == null || Count == null || ValidateErrorCount == true || Count == 0 || SelectedCustomer == null)
                     return false;
 
                 return true;
@@ -159,7 +159,7 @@ namespace ProjectPRN221.ViewModel
 
                 if (CountObject() < Count)
                 {
-                    MessageBox.Show("Sản phẩm trong kho đã hết");
+                    MessageBox.Show("Số lượng sản phẩm còn lại trong kho: " + CountObject() );
                 }
                 else
                 {
@@ -231,7 +231,7 @@ namespace ProjectPRN221.ViewModel
             {
                 if (CountObject() < Count)
                 {
-                    MessageBox.Show("Sản phẩm trong kho đã hết");
+                    MessageBox.Show("Số lượng sản phẩm còn lại trong kho: " + CountObject());
                 }
                 else
                 {

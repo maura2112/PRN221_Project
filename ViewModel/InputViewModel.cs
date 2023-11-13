@@ -136,7 +136,7 @@ namespace ProjectPRN221.ViewModel
             {
                 if (InputPrice > OutputPrice)
                 {
-                    MessageBox.Show("Giá xuất nhỏ hơn giá nhập !, Thêm không thành công.");
+                    MessageBox.Show("Giá xuất phải lớn hơn giá nhập!");
                 }
                 else
                 {
@@ -216,7 +216,7 @@ namespace ProjectPRN221.ViewModel
                             break;
                         }
                     }
-                    MessageBox.Show("Dữ liệu đã được sửa thành công", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Sửa thành công", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
 
             });
@@ -231,7 +231,7 @@ namespace ProjectPRN221.ViewModel
                 return false;
 
             }, (p) => {
-                if (MessageBox.Show("Bạn có chắc muốn xóa dữ liệu này?",
+                if (MessageBox.Show("Bạn có chắc muốn xóa phiếu xuất này?",
                             "Cautions", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 {
 

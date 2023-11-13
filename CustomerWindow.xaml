@@ -21,7 +21,7 @@
         WindowStartupLocation="CenterScreen"
         
         x:Name="window"
-        
+        DataContext="{StaticResource CustomerVM}"
         Title="CustomerWindow" Height="500" Width="700">
     <Grid>
         <Grid.RowDefinitions>
@@ -70,7 +70,7 @@
                                 <GridViewColumn Header="Điện thoại" DisplayMemberBinding="{Binding Phone}"></GridViewColumn>
                                 <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
                                 <GridViewColumn Header="Thông tin thêm" DisplayMemberBinding="{Binding MoreInfo}"></GridViewColumn>
-                                <GridViewColumn Header="Ngày hợp tác" DisplayMemberBinding="{Binding ContractDate}"></GridViewColumn>
+                                <GridViewColumn Header="Ngày hợp tác" DisplayMemberBinding="{Binding ContractDate, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
 
                             </GridView>
                         </ListView.View>

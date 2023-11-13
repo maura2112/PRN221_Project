@@ -10,5 +10,6 @@
     <viewmodel:OutputViewModel x:Key="OutputVM"></viewmodel:OutputViewModel>
     <viewmodel:InputViewModel x:Key="InputVM"></viewmodel:InputViewModel>
     <viewmodel:UserViewModel x:Key="UserVM"></viewmodel:UserViewModel>
+    <viewmodel:CustomerViewModel x:Key="CustomerVM"></viewmodel:CustomerViewModel>
     
 </ResourceDictionary>

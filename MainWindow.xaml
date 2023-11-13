@@ -434,9 +434,9 @@
                                         <GridViewColumn Header="Tên sản phẩm" DisplayMemberBinding="{Binding Object.DisplayName}"></GridViewColumn>
                                         <GridViewColumn Header="Số lượng tồn" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
                                         <GridViewColumn Header="Số lượng nhập vào" DisplayMemberBinding="{Binding CountInput}"></GridViewColumn>
-                                        <GridViewColumn Header="Giá nhập" DisplayMemberBinding="{Binding MoneyInput}"></GridViewColumn>
+                                        <GridViewColumn Header="Tổng nhập" DisplayMemberBinding="{Binding MoneyInput}"></GridViewColumn>
                                         <GridViewColumn Header="Số lượng bán ra" DisplayMemberBinding="{Binding CountOutput}"></GridViewColumn>
-                                        <GridViewColumn Header="Giá bán" DisplayMemberBinding="{Binding MoneyOutput}"></GridViewColumn>
+                                        <GridViewColumn Header="Tổng bán" DisplayMemberBinding="{Binding MoneyOutput}"></GridViewColumn>
                                         <GridViewColumn Header="Tiền lãi" DisplayMemberBinding="{Binding MoneyEarn}"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>
