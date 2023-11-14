@@ -321,8 +321,8 @@ namespace ProjectPRN221.ViewModel
             InventoryList = new ObservableCollection<Inventory>();
             Statistic = new Statistic();
             var dataObjectByDisplayName = DataProvider.Instance.DB.Objects.Where(x => x.DisplayName == SelectedObject.DisplayName).ToList();
-            int luongNhap = 0;
-            int luongXuat = 0;
+            int input = 0;
+            int output = 0;
 
 
             foreach (var item in dataObjectByDisplayName)
@@ -338,17 +338,17 @@ namespace ProjectPRN221.ViewModel
                 {
                     sumInputInfo = (int)dataInputInfo.Sum(x => x.Count);
 
-                    luongNhap += sumInputInfo;
+                    input += sumInputInfo;
                 }
 
                 if (dataOutputInfo != null && dataOutputInfo.Count() > 0)
                 {
                     sumOutputInfor = (int)dataOutputInfo.Sum(x => x.Count);
-                    luongXuat += sumOutputInfor;
+                    output += sumOutputInfor;
                 }
             }
 
-            Statistic.Inventory = luongNhap - luongXuat;
+            Statistic.Inventory = input - output;
             return Statistic.Inventory;
         }
     }

@@ -69,7 +69,7 @@ namespace ProjectPRN221.UserControlMaura {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ProjectPRN221;V1.0.0.0;component/usercontrolmaura/controlbaruc.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ProjectPRN221;component/usercontrolmaura/controlbaruc.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UserControlMaura\ControlBarUC.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

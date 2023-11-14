@@ -138,8 +138,8 @@ namespace ProjectPRN221.ViewModel
 
 
         #region property cho charts
-        private List<DataForCharts> _DataForChart;
-        public List<DataForCharts> DataForChart { get => _DataForChart; set { _DataForChart = value; OnPropertyChanged(); } }
+        private ObservableCollection<DataForCharts> _DataForChart;
+        public ObservableCollection<DataForCharts> DataForChart { get => _DataForChart; set { _DataForChart = value; OnPropertyChanged(); } }
 
         private SeriesCollection _PieChartSeriesCollection;
         public SeriesCollection PieChartSeriesCollection { get => _PieChartSeriesCollection; set { _PieChartSeriesCollection = value; OnPropertyChanged(); } }
@@ -280,8 +280,6 @@ namespace ProjectPRN221.ViewModel
             InventoryList = new ObservableCollection<Inventory>();
             Statistics = new Statistic();
             var objectList = DataProvider.Instance.DB.Objects;
-            int luongNhap = 0;
-            int luongXuat = 0;
 
 
             var dataInputInfo = DataProvider.Instance.DB.InputInfos;
